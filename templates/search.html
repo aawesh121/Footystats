@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Results for "{{ query }}"</h2>
+{% if not query %}
+  <p>Type a player name above.</p>
+{% elif not results %}
+  <p>No players found.</p>
+{% else %}
+  <div class="list-group">
+    {% for r in results %}
+    <a class="list-group-item list-group-item-action d-flex align-items-center"
+       href="{{ url_for('player', player_id=r['player_id']) }}">
+      {% if r['image_url'] %}<img src="{{ r['image_url'] }}" class="thumb me-3" alt="">{% endif %}
+      <div>
+        <strong>{{ r['name'] }}</strong><br>
+        <small class="text-muted">{{ r['position'] or '-' }} &middot; {{ r['current_club'] or '-' }}</small>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center py-5">
+  <h1>Soccer Player Analyzer</h1>
+  <p class="lead">Search a player to see stats, goals/assists per 90 and a season chart.</p>
+  <form class="row justify-content-center" action="{{ url_for('search') }}" method="get">
+    <div class="col-md-6 d-flex">
+      <input class="form-control form-control-lg me-2" name="q" placeholder="e.g. Messi" autofocus>
+      <button class="btn btn-success btn-lg">Search</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
